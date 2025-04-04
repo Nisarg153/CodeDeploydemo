@@ -1,18 +1,21 @@
 version: 0.2
 
-phases: 
-    build:
-        commands:
-            - echo "Build block"
-            - ls
-            - echo "Running tests to check if "Congratulations" present in index.html file"
-            - grep "Congratulations" index.html
-    post_build:
-        commands:
-            - echo "Post build phase"
-artifacts:
-    files:
-        - '**/*'        
-    discard-paths: yes
+phases:
+  build:
+    commands:
+      - echo "Building the app"
+      - ls
+      - echo "Checking for 'Congratulations' in index.html"
+      - grep "Congratulations" index.html
+  post_build:
+    commands:
+      - echo "Post build phase"
 
-            
+artifacts:
+  files:
+    - index.html
+    - appspec.yml
+    - scripts/install_dependencies
+    - scripts/start_server
+    - scripts/stop_server
+  discard-paths: no
